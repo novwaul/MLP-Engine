@@ -1,4 +1,4 @@
-# MNIST Accelerator
+# MLP Engine
 <p align="center">
 <img src=https://github.com/novwaul/MNIST-Accelerator/assets/53179332/e5473804-e3cc-4958-ba5a-be8593f5d748>
 </p>
