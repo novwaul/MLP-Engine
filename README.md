@@ -31,10 +31,6 @@
 │                External Memory (MEMORY_TOP, 40ns access)                  │
 └───────────────────────────────────────────────────────────────────────────┘
 ```
-
-<p align="center">
-The MNIST Classifier for Acceleration
-</p>
   
 ## Motivation
 
