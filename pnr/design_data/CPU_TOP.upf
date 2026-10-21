@@ -1,0 +1,34 @@
+################################################################################
+## AS501
+## Final Project
+## Unified Power Format (UPF)
+################################################################################
+## Copyright (c) 2024 by Smart Energy-Efficient Design Lab. (SEED), KAIST
+## All rights reserved.
+##
+##                            Written by Jihwan Cho (jihwancho@kaist.ac.kr)
+##                            Supervised by Wanyeong Jung (wanyeong@kaist.ac.kr)
+################################################################################
+
+################################################################################
+
+# Create Supply Nets
+create_supply_net VSS
+create_supply_net VDD
+
+# Create Supply Sets
+create_supply_set SS_TOP -function {power VDD} -function {ground VSS}
+
+# Create Power Domains
+create_power_domain PD_TOP -supply {primary SS_TOP}
+
+# Create Supply Ports
+create_supply_port VSS -domain PD_TOP -direction in
+create_supply_port VDD -domain PD_TOP -direction in
+
+# Connect Supply Nets to Supply Ports
+connect_supply_net VSS -ports VSS
+connect_supply_net VDD -ports VDD
+
+# Set Supply States
+add_power_state -supply SS_TOP -state {ON -supply_expr {power == {FULL_ON 0.95} && ground == {FULL_ON 0.0}}}

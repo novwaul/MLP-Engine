@@ -1,0 +1,78 @@
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+INSTRAM          0x00000000         0x00004000         xrw
+DATARAM          0x00004000         0x02000000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x02004000                        PROVIDE (_estack = 0x2004000)
+
+.text           0x00000000      0x8f4
+                [!provide]                        PROVIDE (_start = .)
+                0x00000000                        . = ALIGN (0x4)
+                0x00000000                        _stext = .
+ *(.text)
+ .text          0x00000000        0x8 /tmp/ccXz801s.o
+ .text          0x00000008      0x8ec /tmp/ccPpOIlK.o
+                0x00000008                main
+                0x00000404                store_output
+                0x000004ac                store_output_to_scratch_pad
+                0x00000544                load_input_to_scratch_pad
+                0x000005c0                load_bias_to_scratch_pad
+                0x00000710                fully_connected
+                0x00000860                max
+ *(.text*)
+ *(.rodata)
+ *(.rodata*)
+ *(.srodata)
+ *(.srodata*)
+                0x000008f4                        . = ALIGN (0x4)
+                0x000008f4                        _etext = .
+                0x000008f4                        _sidata = _etext
+
+.rela.dyn       0x000008f4        0x0
+ .rela.text     0x000008f4        0x0 /tmp/ccXz801s.o
+
+.data           0x00004000        0x0 load address 0x000008f4
+                0x00004000                        . = ALIGN (0x4)
+                0x00004000                        _sdata = .
+                [!provide]                        PROVIDE (__global_pointer$ = (. + 0x800))
+                0x00004000                        . = ALIGN (0x4)
+ *(.data)
+ .data          0x00004000        0x0 /tmp/ccXz801s.o
+ .data          0x00004000        0x0 /tmp/ccPpOIlK.o
+ *(.data*)
+ *(.sdata)
+ *(.sdata*)
+                0x00004000                        . = ALIGN (0x4)
+                0x00004000                        _edata = .
+LOAD /tmp/ccXz801s.o
+LOAD /tmp/ccPpOIlK.o
+LOAD /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/libm.a
+LOAD /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a
+START GROUP
+LOAD /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/libc.a
+LOAD /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/../../../../riscv32-unknown-elf/lib/libgloss.a
+END GROUP
+LOAD /opt/riscv/lib/gcc/riscv32-unknown-elf/13.2.0/libgcc.a
+OUTPUT(./out/mlp_riscv.elf elf32-littleriscv)
+
+.bss            0x00004000        0x0 load address 0x000008f4
+ .bss           0x00004000        0x0 /tmp/ccXz801s.o
+ .bss           0x00004000        0x0 /tmp/ccPpOIlK.o
+
+.riscv.attributes
+                0x00000000       0x37
+ .riscv.attributes
+                0x00000000       0x31 /tmp/ccXz801s.o
+ .riscv.attributes
+                0x00000031       0x37 /tmp/ccPpOIlK.o
+
+.comment        0x00000000       0x10
+ .comment       0x00000000       0x10 /tmp/ccPpOIlK.o
+                                 0x11 (size before relaxing)
